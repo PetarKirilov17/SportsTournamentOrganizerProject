@@ -1,0 +1,239 @@
+{
+    "tournaments": {
+      "GET": {
+        "description": "Retrieves a list of all tournaments."
+      },
+      "GET/{id}": {
+        "description": "Retrieves details for a specific tournament by its ID."
+      },
+      "POST": {
+        "description": "Creates a new tournament.",
+        "body": {
+          "name": "string",
+          "sport_type": "string",
+          "start_date": "date",
+          "end_date": "date",
+          "location": "string (optional)",
+          "rules": "string (optional)"
+        }
+      },
+      "PUT/{id}": {
+        "description": "Updates details of an existing tournament.",
+        "body": {
+          "name": "string (optional)",
+          "sport_type": "string (optional)",
+          "start_date": "date (optional)",
+          "end_date": "date (optional)",
+          "location": "string (optional)",
+          "rules": "string (optional)"
+        }
+      },
+      "DELETE/{id}": {
+        "description": "Deletes a tournament."
+      }
+    },
+    "teams": {
+      "GET": {
+        "description": "Retrieves a list of all teams."
+      },
+      "GET/{id}": {
+        "description": "Retrieves details for a specific team by its ID."
+      },
+      "POST": {
+        "description": "Creates a new team.",
+        "body": {
+          "name": "string",
+          "category": "'amateur' | 'professional' | 'youth' (optional)"
+        }
+      },
+      "PUT/{id}": {
+        "description": "Updates details of an existing team.",
+        "body": {
+          "name": "string (optional)",
+          "category": "'amateur' | 'professional' | 'youth' (optional)"
+        }
+      },
+      "DELETE/{id}": {
+        "description": "Deletes a team."
+      }
+    },
+    "participants": {
+      "GET": {
+        "description": "Retrieves a list of all participants."
+      },
+      "GET/{id}": {
+        "description": "Retrieves details for a specific participant by ID."
+      },
+      "POST": {
+        "description": "Creates a new participant.",
+        "body": {
+          "first_name": "string",
+          "last_name": "string",
+          "email": "string",
+          "category": "'amateur' | 'professional' | 'youth' (optional)"
+        }
+      },
+      "PUT/{id}": {
+        "description": "Updates details of an existing participant.",
+        "body": {
+          "first_name": "string (optional)",
+          "last_name": "string (optional)",
+          "email": "string (optional)",
+          "category": "'amateur' | 'professional' | 'youth' (optional)"
+        }
+      },
+      "DELETE/{id}": {
+        "description": "Deletes a participant."
+      }
+    },
+    "team_members": {
+      "GET/{team_id}/members": {
+        "description": "Retrieves a list of members (participants) for a specific team."
+      },
+      "POST/{team_id}/members": {
+        "description": "Adds a participant to a team's roster.",
+        "body": {
+          "participant_id": "number",
+          "role": "string (optional)",
+          "jersey_number": "number (optional)"
+        }
+      },
+      "GET/{team_id}/members/{participant_id}": {
+        "description": "Retrieves details about a specific member within a team."
+      },
+      "PUT/{team_id}/members/{participant_id}": {
+        "description": "Updates the role or jersey number of a team member.",
+        "body": {
+          "role": "string (optional)",
+          "jersey_number": "number (optional)"
+        }
+      },
+      "DELETE/{team_id}/members/{participant_id}": {
+        "description": "Removes a participant from a team's roster."
+      }
+    },
+    "registrations": {
+      "GET/{tournament_id}/registrations": {
+        "description": "Retrieves a list of team registrations (or invitations) for a specific tournament."
+      },
+      "POST/{tournament_id}/registrations": {
+        "description": "Registers or invites a team to a tournament.",
+        "body": {
+          "team_id": "number",
+          "status": "'invited' | 'registered' | 'declined' | 'cancelled' (optional)"
+        }
+      },
+      "GET/{tournament_id}/registrations/{team_id}": {
+        "description": "Retrieves the registration status/details for a specific team in a tournament."
+      },
+      "PUT/{tournament_id}/registrations/{team_id}": {
+        "description": "Updates the registration status for a team in a tournament.",
+        "body": {
+          "status": "'invited' | 'registered' | 'declined' | 'cancelled'"
+        }
+      },
+      "DELETE/{tournament_id}/registrations/{team_id}": {
+        "description": "Removes a team's registration or invitation from a tournament."
+      }
+    },
+    "venues": {
+      "GET": {
+        "description": "Retrieves a list of all venues."
+      },
+      "GET/{id}": {
+        "description": "Retrieves details for a specific venue by ID."
+      },
+      "POST": {
+        "description": "Creates a new venue.",
+        "body": {
+          "name": "string",
+          "address": "string (optional)",
+          "capacity": "number (optional)"
+        }
+      },
+      "PUT/{id}": {
+        "description": "Updates details of an existing venue.",
+        "body": {
+          "name": "string (optional)",
+          "address": "string (optional)",
+          "capacity": "number (optional)"
+        }
+      },
+      "DELETE/{id}": {
+        "description": "Deletes a venue."
+      }
+    },
+    "matches": {
+      "GET/{tournament_id}/matches": {
+        "description": "Retrieves a list of matches scheduled for a specific tournament."
+      },
+      "GET/{id}": {
+        "description": "Retrieves details for a specific match by ID."
+      },
+      "POST/{tournament_id}/matches": {
+        "description": "Schedules a new match within a tournament.",
+        "body": {
+          "home_team_id": "number",
+          "away_team_id": "number",
+          "venue_id": "number",
+          "scheduled_at": "timestamptz",
+          "status": "'scheduled' | 'live' | 'completed' | 'postponed' | 'cancelled' (optional)"
+        }
+      },
+      "PUT/{id}": {
+        "description": "Updates details of an existing match.",
+        "body": {
+          "venue_id": "number (optional)",
+          "scheduled_at": "timestamptz (optional)",
+          "status": "'scheduled' | 'live' | 'completed' | 'postponed' | 'cancelled' (optional)"
+        }
+      },
+      "DELETE/{id}": {
+        "description": "Cancels or deletes a scheduled match."
+      }
+    },
+    "match_results": {
+      "GET/{match_id}/result": {
+        "description": "Retrieves the result for a specific completed match."
+      },
+      "PUT/{match_id}/result": {
+        "description": "Records or updates the score for a completed match.",
+        "body": {
+          "home_score": "number",
+          "away_score": "number"
+        }
+      }
+    },
+    "notifications": {
+      "GET": {
+        "description": "Retrieves a list of notifications.",
+        "query_params": {
+          "recipient_type": "'team' | 'participant' (optional)",
+          "recipient_id": "number (optional)"
+        }
+      },
+      "GET/{id}": {
+        "description": "Retrieves details for a specific notification."
+      },
+      "POST": {
+        "description": "Creates and potentially sends a notification.",
+        "body": {
+          "recipient_type": "'team' | 'participant'",
+          "recipient_id": "number",
+          "type": "'schedule' | 'result' | 'update'",
+          "message": "string",
+          "tournament_id": "number (optional)",
+          "match_id": "number (optional)"
+        }
+      }
+    },
+    "notifications_recipient": {
+      "GET/{team_id}/notifications": {
+        "description": "Retrieves notifications specifically for a team."
+      },
+      "GET/{participant_id}/notifications": {
+        "description": "Retrieves notifications specifically for a participant."
+      }
+    }
+  }
+  
