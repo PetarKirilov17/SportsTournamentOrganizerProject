@@ -1,0 +1,1272 @@
+{
+	"info": {
+		"_postman_id": "03ad0ba7-d472-46ed-9f40-e098c530b0d6",
+		"name": "Tournament Management API",
+		"description": "Automatically generated Postman collection from provided endpoints JSON. Use {{baseUrl}} as the root URL variable.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30165025",
+		"_collection_link": "https://martian-water-292443.postman.co/workspace/Softadev's-03~c6dcb19b-e66a-4d41-9ad3-2d057e6d0de8/collection/30165025-03ad0ba7-d472-46ed-9f40-e098c530b0d6?action=share&source=collection_link&creator=30165025"
+	},
+	"item": [
+		{
+			"name": "tournaments",
+			"item": [
+				{
+					"name": "GET /tournaments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments"
+							]
+						},
+						"description": "Retrieves a list of all tournaments."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /tournaments/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details for a specific tournament by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /tournaments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\",\n  \"sport_type\": \"string\",\n  \"start_date\": \"YYYY-MM-DD\",\n  \"end_date\": \"YYYY-MM-DD\",\n  \"location\": \"string (optional)\",\n  \"rules\": \"string (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tournaments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments"
+							]
+						},
+						"description": "Creates a new tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /tournaments/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string (optional)\",\n  \"sport_type\": \"string (optional)\",\n  \"start_date\": \"YYYY-MM-DD (optional)\",\n  \"end_date\": \"YYYY-MM-DD (optional)\",\n  \"location\": \"string (optional)\",\n  \"rules\": \"string (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates details of an existing tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /tournaments/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Deletes a tournament."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "teams",
+			"item": [
+				{
+					"name": "GET /teams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Retrieves a list of all teams."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /teams/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details for a specific team by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /teams",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\",\n  \"category\": \"'amateur' | 'professional' | 'youth' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Creates a new team."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /teams/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string (optional)\",\n  \"category\": \"'amateur' | 'professional' | 'youth' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates details of an existing team."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /teams/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Deletes a team."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "participants",
+			"item": [
+				{
+					"name": "GET /participants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/participants",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants"
+							]
+						},
+						"description": "Retrieves a list of all participants."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /participants/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/participants/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details for a specific participant by ID."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /participants",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"category\": \"'amateur' | 'professional' | 'youth' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/participants",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants"
+							]
+						},
+						"description": "Creates a new participant."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /participants/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"string (optional)\",\n  \"last_name\": \"string (optional)\",\n  \"email\": \"string (optional)\",\n  \"category\": \"'amateur' | 'professional' | 'youth' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/participants/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates details of an existing participant."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /participants/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/participants/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Deletes a participant."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "team_members",
+			"item": [
+				{
+					"name": "GET /teams/{team_id}/members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{team_id}}/members",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{team_id}}",
+								"members"
+							],
+							"variable": [
+								{
+									"key": "team_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves a list of members (participants) for a specific team."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /teams/{team_id}/members",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"participant_id\": 0,\n  \"role\": \"string (optional)\",\n  \"jersey_number\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{team_id}}/members",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{team_id}}",
+								"members"
+							],
+							"variable": [
+								{
+									"key": "team_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Adds a participant to a team's roster."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /teams/{team_id}/members/{participant_id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{team_id}}/members/{{participant_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{team_id}}",
+								"members",
+								"{{participant_id}}"
+							],
+							"variable": [
+								{
+									"key": "team_id",
+									"value": ""
+								},
+								{
+									"key": "participant_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details about a specific member within a team."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /teams/{team_id}/members/{participant_id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": \"string (optional)\",\n  \"jersey_number\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{team_id}}/members/{{participant_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{team_id}}",
+								"members",
+								"{{participant_id}}"
+							],
+							"variable": [
+								{
+									"key": "team_id",
+									"value": ""
+								},
+								{
+									"key": "participant_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates the role or jersey number of a team member."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /teams/{team_id}/members/{participant_id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{team_id}}/members/{{participant_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{team_id}}",
+								"members",
+								"{{participant_id}}"
+							],
+							"variable": [
+								{
+									"key": "team_id",
+									"value": ""
+								},
+								{
+									"key": "participant_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Removes a participant from a team's roster."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "registrations",
+			"item": [
+				{
+					"name": "GET /tournaments/{tournament_id}/registrations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/registrations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"registrations"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves a list of team registrations (or invitations) for a specific tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /tournaments/{tournament_id}/registrations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"team_id\": 0,\n  \"status\": \"'invited' | 'registered' | 'declined' | 'cancelled' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/registrations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"registrations"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Registers or invites a team to a tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /tournaments/{tournament_id}/registrations/{team_id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/registrations/{{team_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"registrations",
+								"{{team_id}}"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								},
+								{
+									"key": "team_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves the registration status/details for a specific team in a tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /tournaments/{tournament_id}/registrations/{team_id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"'invited' | 'registered' | 'declined' | 'cancelled'\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/registrations/{{team_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"registrations",
+								"{{team_id}}"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								},
+								{
+									"key": "team_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates the registration status for a team in a tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /tournaments/{tournament_id}/registrations/{team_id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/registrations/{{team_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"registrations",
+								"{{team_id}}"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								},
+								{
+									"key": "team_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Removes a team's registration or invitation from a tournament."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "venues",
+			"item": [
+				{
+					"name": "GET /venues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/venues",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"venues"
+							]
+						},
+						"description": "Retrieves a list of all venues."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /venues/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/venues/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"venues",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details for a specific venue by ID."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /venues",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\",\n  \"address\": \"string (optional)\",\n  \"capacity\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/venues",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"venues"
+							]
+						},
+						"description": "Creates a new venue."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /venues/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string (optional)\",\n  \"address\": \"string (optional)\",\n  \"capacity\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/venues/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"venues",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates details of an existing venue."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /venues/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/venues/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"venues",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Deletes a venue."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "matches",
+			"item": [
+				{
+					"name": "GET /tournaments/{tournament_id}/matches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/matches",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"matches"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves a list of matches scheduled for a specific tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /matches/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/matches/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"matches",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details for a specific match by ID."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /tournaments/{tournament_id}/matches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"home_team_id\": 0,\n  \"away_team_id\": 0,\n  \"venue_id\": 0,\n  \"scheduled_at\": \"YYYY-MM-DDTHH:mm:ssZ\",\n  \"status\": \"'scheduled' | 'live' | 'completed' | 'postponed' | 'cancelled' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tournaments/{{tournament_id}}/matches",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tournaments",
+								"{{tournament_id}}",
+								"matches"
+							],
+							"variable": [
+								{
+									"key": "tournament_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Schedules a new match within a tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /matches/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"venue_id\": 0,\n  \"scheduled_at\": \"YYYY-MM-DDTHH:mm:ssZ\",\n  \"status\": \"'scheduled' | 'live' | 'completed' | 'postponed' | 'cancelled' (optional)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/matches/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"matches",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Updates details of an existing match."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /matches/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/matches/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"matches",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Cancels or deletes a scheduled match."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "match_results",
+			"item": [
+				{
+					"name": "GET /matches/{match_id}/result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/matches/{{match_id}}/result",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"matches",
+								"{{match_id}}",
+								"result"
+							],
+							"variable": [
+								{
+									"key": "match_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves the result for a specific completed match."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /matches/{match_id}/result",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"home_score\": 0,\n  \"away_score\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/matches/{{match_id}}/result",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"matches",
+								"{{match_id}}",
+								"result"
+							],
+							"variable": [
+								{
+									"key": "match_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Records or updates the score for a completed match."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "GET /notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/notifications?recipient_type=&recipient_id=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "recipient_type",
+									"value": ""
+								},
+								{
+									"key": "recipient_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves a list of notifications. Optional query parameters: recipient_type ('team' | 'participant'), recipient_id (number)."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /notifications/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/notifications/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"notifications",
+								"{{id}}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves details for a specific notification."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /notifications",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipient_type\": \"'team' | 'participant'\",\n  \"recipient_id\": 0,\n  \"type\": \"'schedule' | 'result' | 'update'\",\n  \"message\": \"string\",\n  \"tournament_id\": 0 (optional),\n  \"match_id\": 0 (optional)\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/notifications",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"notifications"
+							]
+						},
+						"description": "Creates and potentially sends a notification."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notifications_recipient",
+			"item": [
+				{
+					"name": "GET /teams/{team_id}/notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/{{team_id}}/notifications",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"{{team_id}}",
+								"notifications"
+							],
+							"variable": [
+								{
+									"key": "team_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves notifications specifically for a team."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /participants/{participant_id}/notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/participants/{{participant_id}}/notifications",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"{{participant_id}}",
+								"notifications"
+							],
+							"variable": [
+								{
+									"key": "participant_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieves notifications specifically for a participant."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.example.com"
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "team_id",
+			"value": ""
+		},
+		{
+			"key": "participant_id",
+			"value": ""
+		},
+		{
+			"key": "tournament_id",
+			"value": ""
+		},
+		{
+			"key": "recipient_type",
+			"value": ""
+		},
+		{
+			"key": "recipient_id",
+			"value": ""
+		}
+	]
+}
