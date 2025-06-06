@@ -18,6 +18,9 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class MatchResult {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @OneToOne
     @JoinColumn(name = "match_id", nullable = false)
     private Match match;
