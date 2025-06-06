@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.example.demo.enums.RecipientType;
+import com.example.demo.enums.NotificationType;
+import com.example.demo.enums.NotificationStatus;
 
 import java.time.LocalDateTime;
 

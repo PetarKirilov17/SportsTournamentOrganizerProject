@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.enums.RegistrationStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
