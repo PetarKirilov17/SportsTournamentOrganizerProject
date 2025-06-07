@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Ignore SQLite memory DB URI file ###
-memory:myDb?cache=shared
+memory\:myDb\?cache=shared
