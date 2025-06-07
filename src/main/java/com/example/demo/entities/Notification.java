@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,18 +25,22 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonProperty("tournament_id")
     @ManyToOne
     @JoinColumn(name = "tournament_id")
     private Tournament tournament;
 
+    @JsonProperty("match_id")
     @ManyToOne
     @JoinColumn(name = "match_id")
     private Match match;
 
+    @JsonProperty("recipient_type")
     @Enumerated(EnumType.STRING)
     @Column(name = "recipient_type")
     private RecipientType recipientType;
 
+    @JsonProperty("recipient_id")
     @Column(name = "recipient_id")
     private Long recipientId;
 
@@ -44,6 +49,7 @@ public class Notification {
 
     private String message;
 
+    @JsonProperty("sent_at")
     @CreatedDate
     @Column(name = "sent_at")
     private LocalDateTime sentAt;

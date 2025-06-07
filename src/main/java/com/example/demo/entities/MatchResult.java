@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,12 +26,15 @@ public class MatchResult {
     @JoinColumn(name = "match_id", nullable = false)
     private Match match;
 
+    @JsonProperty("home_score")
     @Column(name = "home_score")
     private Integer homeScore;
 
+    @JsonProperty("away_score")
     @Column(name = "away_score")
     private Integer awayScore;
 
+    @JsonProperty("updated_at")
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;

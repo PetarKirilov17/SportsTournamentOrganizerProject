@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,12 +26,15 @@ public class Tournament {
 
     private String name;
 
+    @JsonProperty("sport_type")
     @Column(name = "sport_type")
     private String sportType;
 
+    @JsonProperty("start_date")
     @Column(name = "start_date")
     private LocalDate startDate;
 
+    @JsonProperty("end_date")
     @Column(name = "end_date")
     private LocalDate endDate;
 
