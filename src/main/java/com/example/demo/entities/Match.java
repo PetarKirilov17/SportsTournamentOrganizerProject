@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,28 +28,34 @@ public class Match {
     @JoinColumn(name = "tournament_id", nullable = false)
     private Tournament tournament;
 
+    @JsonProperty("home_team_id")
     @ManyToOne
     @JoinColumn(name = "home_team_id", nullable = false)
     private Team homeTeam;
 
+    @JsonProperty("away_team_id")
     @ManyToOne
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
 
+    @JsonProperty("venue_id")
     @ManyToOne
     @JoinColumn(name = "venue_id", nullable = false)
     private Venue venue;
 
+    @JsonProperty("scheduled_at")
     @Column(name = "scheduled_at")
     private LocalDateTime scheduledAt;
 
     @Enumerated(EnumType.STRING)
     private MatchStatus status;
 
+    @JsonProperty("created_at")
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @JsonProperty("updated_at")
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
