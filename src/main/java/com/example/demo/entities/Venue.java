@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,10 +29,12 @@ public class Venue {
 
     private Integer capacity;
 
+    @JsonProperty("created_at")
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @JsonProperty("updated_at")
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;

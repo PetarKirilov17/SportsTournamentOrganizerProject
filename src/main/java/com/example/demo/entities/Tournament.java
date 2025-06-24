@@ -42,10 +42,12 @@ public class Tournament {
 
     private String rules;
 
+    @JsonProperty("created_at")
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @JsonProperty("updated_at")
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
