@@ -1,6 +1,5 @@
 package com.example.demo.repositories;
 
-import com.example.demo.User;
 import com.example.demo.entities.Team;
 import com.example.demo.enums.TeamCategoryEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
