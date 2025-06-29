@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import javax.sql.DataSource;
+// import jakarta.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
@@ -14,6 +14,9 @@ public class DataSourceConfig {
     @Autowired
     private Environment env;
 
+    // Commenting out custom DataSource configuration to let Spring Boot auto-configure
+    // Spring Boot will automatically configure the datasource from application.properties
+    /*
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -23,4 +26,5 @@ public class DataSourceConfig {
         dataSource.setPassword(env.getProperty("password"));
         return dataSource;
     }
+    */
 }

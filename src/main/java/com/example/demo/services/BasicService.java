@@ -1,11 +1,11 @@
 package com.example.demo.services;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public abstract class BasicService<Entity> {
-    protected abstract CrudRepository<Entity, Long> getRepository();
+    protected abstract JpaRepository<Entity, Long> getRepository();
 
     public Entity getById(Long id) {
         return this.getRepository().findById(id).orElse(null);

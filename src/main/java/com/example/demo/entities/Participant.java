@@ -12,6 +12,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Setter
 @Getter
@@ -19,6 +20,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@NamedEntityGraph(
+    name = "Participant.withTeamMembers",
+    attributeNodes = {
+        @NamedAttributeNode("teamMembers"),
+        @NamedAttributeNode(value = "teamMembers", subgraph = "teamMembers.team")
+    },
+    subgraphs = {
+        @NamedSubgraph(
+            name = "teamMembers.team",
+            attributeNodes = {
+                @NamedAttributeNode("team")
+            }
+        )
+    }
+)
 public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,6 +52,9 @@ public class Participant {
 
     @Enumerated
     private TeamCategoryEnum category;
+
+    @OneToMany(mappedBy = "participant", fetch = FetchType.LAZY)
+    private List<TeamMember> teamMembers;
 
     @JsonProperty("created_at")
     @CreatedDate
