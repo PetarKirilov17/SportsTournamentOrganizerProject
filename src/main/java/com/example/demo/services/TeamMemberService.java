@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeamMemberService extends BasicService<TeamMember> {
     @Autowired
@@ -14,5 +16,9 @@ public class TeamMemberService extends BasicService<TeamMember> {
     @Override
     protected JpaRepository<TeamMember, Long> getRepository() {
         return teamMemberRepository;
+    }
+    
+    public List<TeamMember> findByTeamId(Long teamId) {
+        return teamMemberRepository.findByTeamId(teamId);
     }
 } 
