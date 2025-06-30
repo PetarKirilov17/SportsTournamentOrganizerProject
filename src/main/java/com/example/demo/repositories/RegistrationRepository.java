@@ -19,4 +19,5 @@ public interface RegistrationRepository extends JpaRepository<Registration, Long
     List<Registration> findByRegisteredAtBefore(LocalDateTime date);
     List<Registration> findByRegisteredAtBetween(LocalDateTime startDate, LocalDateTime endDate);
     boolean existsByTeamIdAndTournamentId(Long teamId, Long tournamentId);
+    List<Registration> findAllByTournamentId(Long tournamentId);
 } 
