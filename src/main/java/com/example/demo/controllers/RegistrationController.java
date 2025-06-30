@@ -24,4 +24,12 @@ public class RegistrationController {
     public Registration createRegistration(@PathVariable Long tournamentId, @RequestBody RegistrationRequest request) {
         return registrationService.createRegistration(tournamentId, request.getTeamId(), request.getStatus());
     }
+
+    @PutMapping("/{registrationId}")
+    public Registration updateRegistration(@PathVariable Long tournamentId,
+                                           @PathVariable Long registrationId,
+                                           @RequestBody RegistrationRequest request
+    ) {
+        return registrationService.updateRegistration(tournamentId, registrationId, request.getTeamId(), request.getStatus());
+    }
 } 

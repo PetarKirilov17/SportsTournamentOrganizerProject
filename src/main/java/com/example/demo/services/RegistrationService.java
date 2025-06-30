@@ -49,4 +49,27 @@ public class RegistrationService extends BasicService<Registration> {
 
         return getRepository().save(registration);
     }
-} 
+
+    public Registration updateRegistration(Long tournamentId, Long registrationId, Long teamId, RegistrationStatus status) {
+        Tournament tournament = tournamentService.getById(tournamentId);
+        if (tournament == null) {
+            throw new IllegalArgumentException("Tournament with id " + tournamentId + " not found");
+        }
+
+        Registration registration = getById(registrationId);
+        if (registration == null || !registration.getTournament().getId().equals(tournamentId)) {
+            throw new IllegalArgumentException("Registration with id " + registrationId + " not found for tournament " + tournamentId);
+        }
+
+        Team team = teamService.getById(teamId);
+        if (team == null) {
+            throw new IllegalArgumentException("Team with id " + teamId + " not found");
+        }
+
+        registration.setTeam(team);
+        registration.setStatus(status != null ? status : RegistrationStatus.REGISTERED);
+
+        return getRepository().save(registration);
+
+    }
+}

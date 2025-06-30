@@ -1,5 +1,8 @@
 package com.example.demo.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum RegistrationStatus {
     INVITED("Invited"),
     REGISTERED("Registered"),
@@ -12,7 +15,4 @@ public enum RegistrationStatus {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
-    }
-} 
+}
