@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.example.demo.enums.RegistrationStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,12 +24,11 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @JsonProperty("tournament_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournament_id", nullable = false)
+    @JsonIgnore
     private Tournament tournament;
 
-    @JsonProperty("team_id")
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
