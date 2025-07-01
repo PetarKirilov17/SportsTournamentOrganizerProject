@@ -54,4 +54,10 @@ public class ParticipantController {
     public void deleteParticipant(@PathVariable Long id) {
         participantService.deleteById(id);
     }
+
+    @GetMapping("/team/{teamId}")
+    public ResponseEntity<List<ParticipantResponseDTO>> getParticipantsByTeamId(@PathVariable Long teamId) {
+        List<ParticipantResponseDTO> participants = participantService.getParticipantsByTeamId(teamId);
+        return ResponseEntity.ok(participants);
+    }
 } 

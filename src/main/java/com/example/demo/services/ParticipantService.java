@@ -29,8 +29,15 @@ public class ParticipantService extends BasicService<Participant> {
     }
 
     public List<ParticipantResponseDTO> getAllParticipantsWithTeams() {
-        Iterable<Participant> participants = participantRepository.findAll();
-        return StreamSupport.stream(participants.spliterator(), false)
+        List<Participant> participants = participantRepository.findAllWithTeamMembers();
+        return participants.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ParticipantResponseDTO> getParticipantsByTeamId(Long teamId) {
+        List<Participant> participants = participantRepository.findByTeamId(teamId);
+        return participants.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
