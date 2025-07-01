@@ -20,12 +20,21 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
     boolean existsByName(String name);
     boolean existsByNameIgnoreCase(String name);
 
-    @Query(value = "select new com.example.demo.dto.TeamLeaderboardDTO(t.id, t.name, count(m.id)) " +
-            "from Team t " +
-            "join Registration r on t.id = r.team.id and r.tournament.id = :tournamentId " +
-            "left join Match m on m.homeTeam.id = t.id or m.awayTeam.id = t.id " +
-            "where m.status = 'COMPLETED' and m.tournament.id = :tournamentId " +
-            "and ((m.homeTeam.id = t.id and m.homeScore > m.awayScore) or (m.awayTeam.id = t.id and m.awayScore > m.homeScore)) " +
-            "group by t.id, t.name order by count(m.id) desc")
+    @Query("""
+        select new com.example.demo.dto.TeamLeaderboardDTO(t.id, t.name, count(distinct m.id))
+        from Team t
+        join Registration r on r.team.id = t.id and r.tournament.id = :tournamentId
+        left join Match m on (
+            (m.homeTeam.id = t.id or m.awayTeam.id = t.id)
+            and m.status = 'COMPLETED'
+            and m.tournament.id = :tournamentId
+            and (
+                (m.homeTeam.id = t.id and m.homeScore > m.awayScore) or
+                (m.awayTeam.id = t.id and m.awayScore > m.homeScore)
+            )
+        )
+        group by t.id, t.name
+        order by count(m.id) desc
+    """)
     List<TeamLeaderboardDTO> getLeaderboardForTournament(@Param("tournamentId") Long tournamentId);
 }
