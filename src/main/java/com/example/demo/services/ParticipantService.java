@@ -7,6 +7,7 @@ import com.example.demo.repositories.ParticipantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -62,6 +63,11 @@ public class ParticipantService extends BasicService<Participant> {
         
         // Preserve the createdAt field and let Spring Data JPA handle updatedAt automatically
         return participantRepository.save(existingParticipant);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        participantRepository.deleteById(id);
     }
 
     private ParticipantResponseDTO convertToDTO(Participant participant) {
