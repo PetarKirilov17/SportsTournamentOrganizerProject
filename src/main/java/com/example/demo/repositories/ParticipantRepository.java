@@ -1,6 +1,7 @@
 package com.example.demo.repositories;
 
 import com.example.demo.entities.Participant;
+import com.example.demo.enums.TeamCategoryEnum;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -30,4 +31,7 @@ public interface ParticipantRepository extends JpaRepository<Participant, Long> 
     Optional<Participant> findByEmail(String email);
     Optional<Participant> findByFirstNameAndLastName(String firstName, String lastName);
     Optional<Participant> findByEmailIgnoreCase(String email);
+    
+    // Find participants by category
+    List<Participant> findByCategory(TeamCategoryEnum category);
 } 

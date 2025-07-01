@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.dto.AddTeamMemberDTO;
+import com.example.demo.dto.ParticipantResponseDTO;
 import com.example.demo.dto.TeamMemberResponseDTO;
 import com.example.demo.dto.UpdateTeamMemberDTO;
 import com.example.demo.entities.Participant;
@@ -67,6 +68,12 @@ public class TeamMemberService extends BasicService<TeamMember> {
         // Check if participant is already a member of this team
         if (teamMemberRepository.existsByTeamIdAndParticipantId(teamId, addDTO.getParticipantId())) {
             throw new IllegalArgumentException("Participant is already a member of this team");
+        }
+        
+        // Check if participant category matches team category
+        if (!participant.getCategory().equals(team.getCategory())) {
+            throw new IllegalArgumentException("Participant category (" + participant.getCategory() + 
+                    ") does not match team category (" + team.getCategory() + ")");
         }
         
         // Check if jersey number is already taken in this team (if provided)
@@ -171,6 +178,61 @@ public class TeamMemberService extends BasicService<TeamMember> {
         return teamMembers.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+    
+    public List<ParticipantResponseDTO> getAvailableParticipantsForTeam(Long teamId) {
+        // Verify team exists
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(() -> new IllegalArgumentException("Team not found with id: " + teamId));
+        
+        // Get all participants with the same category as the team
+        List<Participant> participantsWithMatchingCategory = participantRepository.findByCategory(team.getCategory());
+        
+        // Get participants that are already in this team
+        List<Long> existingParticipantIds = teamMemberRepository.findByTeamId(teamId)
+                .stream()
+                .map(teamMember -> teamMember.getParticipant().getId())
+                .collect(Collectors.toList());
+        
+        // Filter out participants that are already in the team
+        List<Participant> availableParticipants = participantsWithMatchingCategory.stream()
+                .filter(participant -> !existingParticipantIds.contains(participant.getId()))
+                .collect(Collectors.toList());
+        
+        // Convert to DTO
+        return availableParticipants.stream()
+                .map(this::convertParticipantToDTO)
+                .collect(Collectors.toList());
+    }
+    
+    private ParticipantResponseDTO convertParticipantToDTO(Participant participant) {
+        ParticipantResponseDTO dto = new ParticipantResponseDTO();
+        dto.setId(participant.getId());
+        dto.setFirstName(participant.getFirstName());
+        dto.setLastName(participant.getLastName());
+        dto.setEmail(participant.getEmail());
+        dto.setCategory(participant.getCategory());
+        dto.setCreatedAt(participant.getCreatedAt());
+        dto.setUpdatedAt(participant.getUpdatedAt());
+        
+        // Set team memberships if available
+        if (participant.getTeamMembers() != null) {
+            List<ParticipantResponseDTO.TeamMembershipDTO> teamMemberships = participant.getTeamMembers().stream()
+                    .map(tm -> {
+                        ParticipantResponseDTO.TeamMembershipDTO membership = new ParticipantResponseDTO.TeamMembershipDTO();
+                        membership.setTeamId(tm.getTeam().getId());
+                        membership.setTeamName(tm.getTeam().getName());
+                        membership.setTeamCategory(tm.getTeam().getCategory());
+                        membership.setRole(tm.getRole());
+                        membership.setJerseyNumber(tm.getJerseyNumber());
+                        membership.setAddedAt(tm.getAddedAt());
+                        return membership;
+                    })
+                    .collect(Collectors.toList());
+            dto.setTeamMemberships(teamMemberships);
+        }
+        
+        return dto;
     }
     
     private TeamMemberResponseDTO convertToDTO(TeamMember teamMember) {
