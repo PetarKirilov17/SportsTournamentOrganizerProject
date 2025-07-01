@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.controllers.requests.RegistrationRequest;
+import com.example.demo.dto.RegistrationRequestDTO;
 import com.example.demo.entities.Registration;
 import com.example.demo.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,14 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public Registration createRegistration(@PathVariable Long tournamentId, @RequestBody RegistrationRequest request) {
+    public Registration createRegistration(@PathVariable Long tournamentId, @RequestBody RegistrationRequestDTO request) {
         return registrationService.createRegistration(tournamentId, request.getTeamId(), request.getStatus());
     }
 
     @PutMapping("/{registrationId}")
     public Registration updateRegistration(@PathVariable Long tournamentId,
                                            @PathVariable Long registrationId,
-                                           @RequestBody RegistrationRequest request
+                                           @RequestBody RegistrationRequestDTO request
     ) {
         return registrationService.updateRegistration(tournamentId, registrationId, request.getTeamId(), request.getStatus());
     }

@@ -28,17 +28,16 @@ public class Match {
     @JoinColumn(name = "tournament_id", nullable = false)
     private Tournament tournament;
 
-    @JsonProperty("home_team_id")
+    @JsonProperty("home_team")
     @ManyToOne
     @JoinColumn(name = "home_team_id", nullable = false)
     private Team homeTeam;
 
-    @JsonProperty("away_team_id")
+    @JsonProperty("away_team")
     @ManyToOne
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
 
-    @JsonProperty("venue_id")
     @ManyToOne
     @JoinColumn(name = "venue_id", nullable = false)
     private Venue venue;
@@ -46,6 +45,14 @@ public class Match {
     @JsonProperty("scheduled_at")
     @Column(name = "scheduled_at")
     private LocalDateTime scheduledAt;
+
+    @JsonProperty("home_score")
+    @Column(name = "home_score")
+    private Integer homeScore;
+
+    @JsonProperty("away_score")
+    @Column(name = "away_score")
+    private Integer awayScore;
 
     @Enumerated(EnumType.STRING)
     private MatchStatus status;

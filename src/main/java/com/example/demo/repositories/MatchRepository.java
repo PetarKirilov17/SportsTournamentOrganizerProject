@@ -20,4 +20,5 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
     List<Match> findByTournamentIdAndStatus(Long tournamentId, MatchStatus status);
     List<Match> findByVenueIdAndStatus(Long venueId, MatchStatus status);
     Optional<Match> findByTournamentIdAndScheduledAt(Long tournamentId, LocalDateTime scheduledAt);
-} 
+
+}

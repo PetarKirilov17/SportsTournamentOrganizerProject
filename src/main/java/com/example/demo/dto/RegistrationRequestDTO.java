@@ -1,4 +1,4 @@
-package com.example.demo.controllers.requests;
+package com.example.demo.dto;
 
 import com.example.demo.enums.RegistrationStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RegistrationRequest {
+public class RegistrationRequestDTO {
     @JsonProperty("team_id")
     private Long teamId;
 
