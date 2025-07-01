@@ -1,7 +1,6 @@
 package com.example.demo.dto;
 
 import com.example.demo.enums.MatchStatus;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +19,6 @@ public class MatchRequestDTO {
     @JsonProperty("venue_id")
     private Long venueId;
 
-//    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @JsonProperty("scheduled_at")
     private LocalDateTime scheduledAt;
 
