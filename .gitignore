@@ -34,3 +34,4 @@ build/
 
 ### Ignore SQLite memory DB URI file ###
 memory\:myDb\?cache=shared
+./data/myDb.db
