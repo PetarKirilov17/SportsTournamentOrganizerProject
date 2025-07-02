@@ -9,6 +9,7 @@ import com.example.demo.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -62,19 +63,18 @@ public class TeamService extends BasicService<Team> {
         return teamRepository.save(existingTeam);
     }
     
+    @Transactional
     public void deleteTeam(Long id) {
         Team team = teamRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Team not found with id: " + id));
         
-        // Check if team has members
+        // Delete all team members before deleting the team
         List<TeamMember> teamMembers = teamMemberRepository.findByTeamId(id);
         if (!teamMembers.isEmpty()) {
-            throw new IllegalArgumentException("Cannot delete team with existing members. Remove all members first.");
+            teamMemberRepository.deleteAll(teamMembers);
         }
         
-        // Check if team is registered in any tournaments
-        // This would require a RegistrationRepository check, but for now we'll proceed
-        // In a real application, you might want to check for active registrations
+        // Optionally: Check if team is registered in any tournaments (not implemented here)
         
         teamRepository.deleteById(id);
     }

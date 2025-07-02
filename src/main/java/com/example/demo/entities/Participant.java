@@ -53,7 +53,7 @@ public class Participant {
     @Enumerated
     private TeamCategoryEnum category;
 
-    @OneToMany(mappedBy = "participant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "participant", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<TeamMember> teamMembers;
 
     @JsonProperty("created_at")

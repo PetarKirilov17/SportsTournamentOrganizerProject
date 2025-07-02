@@ -26,4 +26,4 @@ public class TournamentService extends BasicService<Tournament> {
     public List<TeamLeaderboardDTO> getLeaderboard(Long id) {
         return teamRepository.getLeaderboardForTournament(id);
     }
-}
+} 

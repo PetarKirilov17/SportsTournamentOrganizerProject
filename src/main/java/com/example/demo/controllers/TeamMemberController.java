@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.dto.AddTeamMemberDTO;
 import com.example.demo.dto.ApiResponseDTO;
+import com.example.demo.dto.ParticipantResponseDTO;
 import com.example.demo.dto.TeamMemberResponseDTO;
 import com.example.demo.dto.UpdateTeamMemberDTO;
 import com.example.demo.services.TeamMemberService;
@@ -144,6 +145,25 @@ public class TeamMemberController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(ApiResponseDTO.error("Failed to check participant membership: " + e.getMessage(), 500));
+        }
+    }
+    
+    @GetMapping("/available")
+    public ResponseEntity<ApiResponseDTO<List<ParticipantResponseDTO>>> getAvailableParticipantsForTeam(@PathVariable Long teamId) {
+        try {
+            List<ParticipantResponseDTO> availableParticipants = teamMemberService.getAvailableParticipantsForTeam(teamId);
+            return ResponseEntity.ok(ApiResponseDTO.success(availableParticipants, "Available participants retrieved successfully"));
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().contains("not found")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(ApiResponseDTO.error("Team not found: " + e.getMessage(), 404));
+            } else {
+                return ResponseEntity.badRequest()
+                        .body(ApiResponseDTO.error("Invalid request: " + e.getMessage(), 400));
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(ApiResponseDTO.error("Failed to retrieve available participants: " + e.getMessage(), 500));
         }
     }
 } 
