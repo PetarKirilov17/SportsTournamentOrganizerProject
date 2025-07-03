@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.User;
+import com.example.demo.entities.Participant;
 import com.example.demo.dto.CreateUserRequestDTO;
 import com.example.demo.dto.UpdateUserRequestDTO;
 import com.example.demo.dto.UserResponseDTO;
@@ -75,10 +76,36 @@ public class AdminController {
         Optional<User> existingUser = userRepository.findById(id);
         if (existingUser.isPresent()) {
             User user = existingUser.get();
-            if (request.getName() != null) user.setName(request.getName());
-            if (request.getEmail() != null) user.setEmail(request.getEmail());
+            boolean nameChanged = false;
+            boolean emailChanged = false;
+            if (request.getName() != null) {
+                user.setName(request.getName());
+                nameChanged = true;
+            }
+            if (request.getEmail() != null) {
+                user.setEmail(request.getEmail());
+                emailChanged = true;
+            }
             if (request.getRole() != null) user.setRole(request.getRole());
-            
+
+            // Update linked participant if present
+            if (user.getParticipant() != null && (nameChanged || emailChanged)) {
+                Participant participant = user.getParticipant();
+                if (nameChanged) {
+                    String[] nameParts = user.getName().trim().split("\\s+", 2);
+                    if (nameParts.length >= 2) {
+                        participant.setFirstName(nameParts[0]);
+                        participant.setLastName(nameParts[1]);
+                    } else {
+                        participant.setFirstName(user.getName());
+                        participant.setLastName("");
+                    }
+                }
+                if (emailChanged) {
+                    participant.setEmail(user.getEmail());
+                }
+            }
+
             User updatedUser = userRepository.save(user);
             return ResponseEntity.ok(new UserResponseDTO(updatedUser));
         }

@@ -7,7 +7,7 @@ public class CreateUserRequestDTO {
     private String email;
     private String password;
     private Role role;
-    private Long participantId; // nullable, only for PARTICIPANT
+    private Long participantId; // nullable, only for PARTICIPANT role. If null, a new participant will be created automatically
 
     // Getters and Setters
     public String getName() {

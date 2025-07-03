@@ -11,6 +11,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
 import com.example.demo.enums.Role;
+import jakarta.persistence.CascadeType;
 
 @Setter
 @Getter
@@ -29,6 +30,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Participant participant; // Nullable, only for PARTICIPANT users
 }

@@ -38,7 +38,7 @@ public class AuthController {
         public String email;
         public String password;
         public Role role;
-        public Long participantId; // nullable, only for PARTICIPANT
+        public Long participantId; // nullable, only for PARTICIPANT role. If null, a new participant will be created automatically
     }
 
     public static class LoginRequest {
