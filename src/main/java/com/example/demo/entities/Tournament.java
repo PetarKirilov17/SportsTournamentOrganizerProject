@@ -26,15 +26,12 @@ public class Tournament {
 
     private String name;
 
-    @JsonProperty("sport_type")
     @Column(name = "sport_type")
     private String sportType;
 
-    @JsonProperty("start_date")
     @Column(name = "start_date")
     private LocalDate startDate;
 
-    @JsonProperty("end_date")
     @Column(name = "end_date")
     private LocalDate endDate;
 
@@ -42,12 +39,10 @@ public class Tournament {
 
     private String rules;
 
-    @JsonProperty("created_at")
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @JsonProperty("updated_at")
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;

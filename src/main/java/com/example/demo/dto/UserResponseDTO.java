@@ -1,7 +1,6 @@
 package com.example.demo.dto;
 
 import com.example.demo.User;
-import com.example.demo.entities.Participant;
 import com.example.demo.enums.Role;
 
 public class UserResponseDTO {
@@ -9,7 +8,6 @@ public class UserResponseDTO {
     private String name;
     private String email;
     private Role role;
-    private Participant participant;
 
     // Constructor from User entity
     public UserResponseDTO(User user) {
@@ -17,7 +15,6 @@ public class UserResponseDTO {
         this.name = user.getName();
         this.email = user.getEmail();
         this.role = user.getRole();
-        this.participant = user.getParticipant();
     }
 
     // Default constructor
@@ -54,13 +51,5 @@ public class UserResponseDTO {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public Participant getParticipant() {
-        return participant;
-    }
-
-    public void setParticipant(Participant participant) {
-        this.participant = participant;
     }
 } 
